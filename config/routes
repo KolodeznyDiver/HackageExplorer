@@ -1,0 +1,14 @@
+/static StaticR Static appStatic
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+/ HomeR GET POST
+/scan ScanR GET
+/process-acq  ProcessAcqR POST
+/package/#Text PkgViewR GET
+/add-category NewCategR POST
+/update-categories UpdateCategR POST
+/update-comment UpdateCommentR POST
+/unused-categories UnusedCatR GET
+/remove-cetegory RemoveCatR POST

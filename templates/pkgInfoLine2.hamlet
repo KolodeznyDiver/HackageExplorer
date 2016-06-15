@@ -1,0 +1,15 @@
+$newline never
+<div .value>
+    #{preEscapedToMarkup $ pckgShortDescr v}
+<div>
+    Author(s) : #
+    <span .value>
+        #{preEscapedToMarkup $ pckgAuthor v}
+    \.
+<div>
+    Author's categories : #
+    $forall (n,isNxt) <- (zipWithNxt acns)
+            $if isNxt
+                \, #
+            <span .value>
+                #{n}

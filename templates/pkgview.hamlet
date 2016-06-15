@@ -1,0 +1,56 @@
+$newline never
+<h3 class="text-center">
+    The #{pckgName v} package
+<div class="text-right">
+    <a href=@{HomeR}>
+        Go to Home page
+<div>
+    ^{pkgInfoLine1Widget e}
+<div>
+    ^{pkgInfoLine2Widget e}
+<!-- <form method=post action=@{HomeR} enctype=#{formEnctype}>
+    ^{formWidget}
+    <button type="submit"> 
+        Commit -->
+<input type="hidden" #pkgSlctCategs value="#{intercalate "," cns}">
+^{categWidget False}
+<table border=0 #saveCatBtnTable>
+    <tr>
+        <td>
+            ^{btnWidget "saveCatBtn" "commit"}
+        <td .right>
+            ( <a href=@{UnusedCatR}>Unused categories in all packages )
+<div>
+    New category #
+    <input #newCateg" type="text" value="">
+    \ #
+    ^{btnWidget "newCatBtn" "create"} 
+    \ #
+    <span #newCatWarn>
+<div>
+    Home page : #
+    <a href="#{pckgHomePage v}">
+        #{pckgHomePage v}
+<div>
+    Repositories : #
+    $forall (n,isNxt) <- zipWithNxt $ words $ pckgReps v
+        $if isNxt
+            \, #
+        <a href="#{n}">
+            #{n}
+<div>
+    Description :
+<div .border #pkgDescriptionParent>
+    <div .scrollbar #pkgDescription>
+        #{preEscapedToMarkup $ pckgDescr v}
+<div>
+    Depends on: ^{commaSeparatedCatListWidget $ map unSingle dpnds}
+<div>
+    Used by: ^{commaSeparatedCatListWidget $ map unSingle usedby}
+<div>
+    Comment :
+<div .right>
+    <input type="text"  #comment value="#{pckgComment v}">
+<p>
+    <div .center>
+        ^{btnWidget "commentBtn" "commit"} 

@@ -1,0 +1,12 @@
+.selectedresult {
+    text-align: center;
+    font-style: italic; 
+    font-size:large; 
+    font-weight:bold;
+} 
+.bigfont {
+    font-size:large; 
+}
+.infoindent {
+    margin-left: 30px; 
+}

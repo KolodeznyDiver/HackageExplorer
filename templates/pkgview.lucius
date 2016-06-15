@@ -1,0 +1,43 @@
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.border {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.value {
+    font-weight:bold;
+}
+.marginleft{
+    margin-left: 30px;
+}
+
+#saveCatBtnTable{
+    margin: 10px 0px 20px 50px;
+    text-align: center;
+}
+
+#saveCatBtnTable td {
+    padding-left: 30px;
+}
+
+#newCatWarn {
+    margin-left: 20px;
+    color:#F00; 
+}
+
+#pkgDescription {
+    overflow:scroll; 
+    padding: 5px;
+    height: 400px;
+}
+#pkgDescriptionParent {
+    margin-left: 30px; 
+    width: 98%;
+}
+#comment {
+    width: 100%;
+}

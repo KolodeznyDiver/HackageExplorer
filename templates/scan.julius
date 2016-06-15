@@ -1,0 +1,32 @@
+$( window ).load(function() { 
+    var canAjax=true;
+    var terminal=$("#TerminalOutput");
+    var intervalId=setInterval( function () {
+        if(canAjax){
+            canAjax=false;
+            $.ajax({
+                url: '@{ProcessAcqR}',
+                type: 'POST',
+                contentType: "application/json",
+                timeout: 2000,
+                data: JSON.stringify({
+                    AcqMode: "messages"
+                }),
+                success: function (data) {
+                    canAjax=true;
+                    data.msgs.forEach(function(msg) {
+                        terminal.append("<div>"+msg+"</div>");
+                    });
+                    terminal.scrollTop(terminal[0].scrollHeight);
+                    if(data.finished){
+                        clearInterval(intervalId);
+                        $("#gotoHome").show();
+                    }
+                },
+                error: function (data) {
+                    canAjax=true;
+                }
+            });
+        }
+    },500);
+});

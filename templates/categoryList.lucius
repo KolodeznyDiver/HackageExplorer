@@ -1,0 +1,22 @@
+#Categories {
+    overflow:scroll; 
+    padding: 5px;
+    height: 200px;
+}
+#categFltrList span, #Categories span, .categ {
+    margin: 3px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background:#CCC;
+    color: #000;
+    cursor:pointer;
+    display:inline-block;
+}
+.categoryBorder {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+#CategoriesParent {
+    margin-left: 30px; 
+    width: 98%;
+}

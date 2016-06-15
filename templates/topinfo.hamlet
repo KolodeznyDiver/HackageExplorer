@@ -1,0 +1,12 @@
+All packages in local DB : #
+    <span .value>#{allPkgs}
+$forall (Entity _ (ScanInfo{..})) <- scanInf
+    , last Hackage scan : #
+        <span .value>#{time2Str scanInfoTime}
+    , new packages : #
+        <span .value>#{scanInfoNewPkgs} 
+    , updated packages : #
+        <span .value>#{scanInfoUpdtPkgs}
+.
+<hr>
+<a href=@{ScanR}>Update packages info from hackage</a>

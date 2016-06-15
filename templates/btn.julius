@@ -1,0 +1,19 @@
+function btnState(btn, state) {
+    var e="softbtnEna";
+    var d="softbtnDisa";
+    var w="softbtnwait";
+    if(state=="wait"){
+        btn.removeClass(d); 
+        btn.removeClass(e); 
+        btn.addClass(w);
+    } else if(state && state!="disa"){
+        btn.removeClass(d); 
+        btn.removeClass(w); 
+        btn.addClass(e);
+    }else{
+        btn.removeClass(e); 
+        btn.removeClass(w); 
+        btn.addClass(d);
+    }
+}
+

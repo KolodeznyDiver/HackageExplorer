@@ -1,0 +1,108 @@
+
+function newCatParse()
+{
+    var s=newCatInput.val().trim();
+    if(s==""){
+        newCatWarn.text(""); return false;
+    }
+    if(s.indexOf(',')>-1){
+        newCatWarn.text("Illegal symbol ','"); return false;
+    }
+    
+    var containedIn = function (container){
+        return container.children().is( function (){return s==$(this).text();});
+    };
+        
+    if(containedIn(selCategories) || containedIn(selCategFltrList)){
+        newCatWarn.text("This category exists already"); return false;
+    }
+    
+    newCatWarn.text(""); return s;
+}
+function newCatChk(){
+    btnState(newCatBtn,newCatParse());
+}
+
+function saveCatBtnEnable(){
+    btnState(saveCatBtn,true);
+}
+
+var canAjax=true;
+
+$( window ).load(function() { 
+    window.newCatInput=$("#newCateg");
+    window.newCatWarn=$("#newCatWarn");
+    window.newCatBtn=$("#newCatBtn");
+    window.saveCatBtn=$("#saveCatBtn");
+    window.commentBtn=$("#commentBtn");
+    window.commentInput=$("#comment");
+    window.oldComment=commentInput.val();
+    newCatInput.keyup(newCatChk);
+//    newCatInput.paste(newCatChk);
+    $("#Categories span").click(saveCatBtnEnable);
+    $("#categFltrList span").click(saveCatBtnEnable); 
+    newCatBtn.click(function (){
+        var s=newCatParse();
+        if(s && canAjax){
+            var e=selCategories.children().first().clone( true );
+            e.text(s);
+            sortedMoveSel(selCategFltrList,e); canAjax=false;
+            btnState(newCatBtn,"wait");
+            $.ajax({
+                url: '@{NewCategR}',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    id: #{toJSON k},
+                    s: s
+                }),
+                success: function (data) {
+                    newCatInput.val(""); canAjax=true;
+                    btnState(newCatBtn,false); saveCatBtnEnable();
+                }
+            });             
+        }   
+    });
+    saveCatBtn.click(function (){
+        if(canAjax){
+            var s=selCategPersist.val();  canAjax=false;
+            btnState(saveCatBtn,"wait");
+            $.ajax({
+                url: '@{UpdateCategR}',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    id: #{toJSON k}, 
+                    s: s
+                }),
+                success: function (data) {
+                    canAjax=true;
+                    btnState(saveCatBtn,false);
+                }
+            });             
+        }
+    });
+    commentBtn.click(function (){
+        var s=commentInput.val();
+        if(canAjax && oldComment!=s){
+            canAjax=false;
+            btnState(commentBtn,"wait");
+            $.ajax({
+                url: '@{UpdateCommentR}',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    id: #{toJSON k}, 
+                    s: s
+                }),
+                success: function (data) {
+                    canAjax=true; oldComment=s;
+                    btnState(commentBtn,false);
+                }
+            });
+        }             
+    });
+    commentInput.keyup(function (){
+        btnState(commentBtn,oldComment!=commentInput.val());
+    });
+});

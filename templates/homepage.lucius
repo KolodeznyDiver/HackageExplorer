@@ -1,0 +1,19 @@
+#pkgSlctFrom {
+    width:140px;
+    height:24px;
+}
+#pkgSlctDwnlds {
+    width:50px;
+    height:24px;
+}
+#pkgSlctFrom, #pkgSlctDwnlds, #pkgSlctStackage {
+    margin-left:10px;
+    margin-bottom: 5px;
+}
+.editcatlabel {
+    font-weight: bold;
+}   
+form .optional {
+    display: none;
+}
+

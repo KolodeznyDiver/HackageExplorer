@@ -1,0 +1,7 @@
+$newline never
+$forall (n,isNxt) <- zipWithNxt pks
+    $if isNxt
+        \, #
+    <a href=@{PkgViewR n}>
+        #{n}
+

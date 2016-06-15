@@ -1,0 +1,24 @@
+.softbtn {
+    display: inline;
+    margin 5px 10px;
+    padding: 3px 10px;
+    border: 1px solid #000;
+    border-radius: 6px; 
+    text-align: center;
+    background:#CCC;
+}
+
+.softbtnEna {
+    color: #000;
+    cursor:pointer;
+}
+
+.softbtnDisa {
+    color: #666;
+    cursor:not-allowed;
+}
+
+.softbtnwait {
+    color: #CCC;
+    cursor:wait;
+}

@@ -1,0 +1,43 @@
+
+function sortedMoveSel(selTo,el)
+{
+    if(el){
+        var t=el.text().toLowerCase();
+        var d=selTo.children().filter( function (){
+                return $(this).text().toLowerCase()>t;
+            }).first();
+        if(d.size()==0)
+            selTo.append(el);
+        else d.before(el);
+    }
+}
+
+
+function OnCategClick (  ) {
+    var selThis=$( this );
+    var selParent=selThis.parent();
+    var selTo;
+    if(selParent.is(selCategories)){
+        selTo=selCategFltrList;
+    }else{
+        selTo=selCategories;
+    }
+    sortedMoveSel(selTo,selThis);
+    selCategPersist.val(
+        selCategFltrList.children().map(function() { 
+           return $(this).text();}).get().join()
+    );
+    return false;
+}
+
+$( window ).load(function() {
+    $("#Categories span").click(OnCategClick);
+    window.selCategFltrList=$("#categFltrList");
+    window.selCategories=$("#Categories");
+    window.selCategPersist=$("#pkgSlctCategs");
+    var a=selCategPersist.val().split(',');
+    selCategories.children().filter( function (){return a.indexOf($(this).text())> -1;})
+    .each(function() {
+        sortedMoveSel(selCategFltrList,$(this));
+    });
+});

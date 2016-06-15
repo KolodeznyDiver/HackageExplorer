@@ -1,0 +1,2 @@
+<span ##{btnId} .softbtn .softbtnDisa>
+            #{caption} 

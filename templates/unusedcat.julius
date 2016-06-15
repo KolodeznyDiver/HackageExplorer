@@ -1,0 +1,23 @@
+var canAjax=true;
+
+$( window ).load(function() { 
+    $("#Categories span").click(function (){
+        if(canAjax){
+            var selThis=$( this ); 
+            var s=selThis.text();
+            selThis.remove();
+            canAjax=false;
+            $.ajax({
+                url: '@{RemoveCatR}',
+                type: 'POST',
+                contentType: "application/json",
+                data: JSON.stringify({
+                    catNameToRemove: s
+                }),
+                success: function (data) {
+                    canAjax=true;
+                }
+            });             
+        }   
+    });
+});

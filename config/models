@@ -1,0 +1,35 @@
+ScanInfo
+    time UTCTime
+    newPkgs Int
+    updtPkgs Int
+Categ
+    name Text
+    UniqueCateg name 
+Pckg
+    name Text
+    shortDescr Text
+    descr Text
+    ver Text
+    author Text
+    homePage Text
+    reps Text
+    lastUpload UTCTime
+    stackageVer Text
+    stackageURL Text
+    downloads Int
+    isDoc   Bool
+    comment Text
+    UniquePckg name
+Depend
+    pkg PckgId 
+    on  PckgId
+    UniqueDepend pkg on
+AuthorsCateg
+    pkg PckgId
+    cat CategId
+    UniqueAuthorsCateg pkg cat
+UsersCateg
+    pkg PckgId
+    cat CategId
+    UniqueUsersCateg pkg cat
+ -- By default this file is used in Model.hs (which is imported by Foundation.hs)

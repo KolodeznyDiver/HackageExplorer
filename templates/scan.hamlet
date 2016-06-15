@@ -1,0 +1,7 @@
+<p>
+    Loading package descriptions from 
+    <a href="#{hackageURL}">
+        #{hackageURL}
+<div class="scrollbar" id="TerminalOutput">
+<a href=@{HomeR} id="gotoHome">
+    Go to Home page

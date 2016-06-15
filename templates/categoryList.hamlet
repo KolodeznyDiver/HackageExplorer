@@ -1,0 +1,6 @@
+<div .categoryBorder #CategoriesParent>
+    <div .scrollbar #Categories>
+        $forall n <- ctgs
+            <span>
+                #{n}
+

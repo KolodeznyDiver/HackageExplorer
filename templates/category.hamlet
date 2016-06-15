@@ -1,0 +1,10 @@
+<div>
+    <div>
+        <span .editcatlabel>
+            Categories : #
+        <span #categFltrList>
+    $if categRemark
+        <div class="text-center">
+            (empty list - select packages without categories)
+    ^{categoryListWidget ctgFltr}
+

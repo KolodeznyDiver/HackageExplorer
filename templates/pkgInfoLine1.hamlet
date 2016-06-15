@@ -1,0 +1,18 @@
+Last upload = #
+<span .value>
+    #{tshow $ pckgLastUpload v}
+\, month's downloads = #
+<span .value>
+    #{tshow $ pckgDownloads v}
+\. Hackage : #
+<a href="#{hackageURL}#{hackagePkgPrefix}#{pckgName v}">
+    #{pckgVer v} 
+\, Doc=
+<span .value>
+    #{boolToHtml $ pckgIsDoc v}
+\.
+$if not $ null $ pckgStackageVer v 
+    Stackage #
+    <a href="#{pckgStackageURL v}">
+        #{pckgStackageVer v}
+    \.

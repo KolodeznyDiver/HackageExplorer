@@ -1,0 +1,8 @@
+<h3 class="text-center">
+    Unused categories
+<div class="text-right">
+    <a href=@{HomeR}>
+        Go to Home page
+<div class="text-center">
+    Click on category for remove.
+^{categoryNameListWidget ctgs}

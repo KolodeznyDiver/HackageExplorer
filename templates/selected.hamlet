@@ -1,0 +1,23 @@
+$if null pks
+    <div .selectedresult>
+         not found
+$else
+    <div .selectedresult>
+         #{tshow pksLn} package(s) found
+    $if pksLn >= pkgViewLimit
+        <div .selectedresult>
+            It's too many. The following is a list of links to the full package descriptions.
+        ^{commaSeparatedCatListWidget $ map (pckgName . entityVal) pks}
+    $else
+        $forall e@(Entity k v) <- pks
+            <hr>
+            <div>
+                <a href=@{PkgViewR $ pckgName v} .bigfont>
+                    #{pckgName v}
+                \. ^{pkgInfoLine1Widget e}
+            <div .infoindent>
+                ^{pkgInfoLine2Widget e}
+                <div>
+                    Editable categories : ^{usersCategWidget k}
+                <div>
+                    Comment : #{pckgComment v}

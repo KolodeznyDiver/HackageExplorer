@@ -1,0 +1,35 @@
+#TerminalOutput {
+    overflow:scroll;
+    margin-left: 30px;
+    padding: 5px;
+    height: 600px;
+    width: 90%;
+    color:#CCC;
+    background: black;
+    margin-bottom: 25px;
+}
+#gotoHome {
+    display: none   ;
+}
+.value {
+    font-size:large;
+    font-weight:bold;
+}
+.errMsg {
+    color:#F00;
+}
+.newPackage {
+    color:#8080FF;
+}
+.updatedPackage {
+    color:#0F0;
+}
+.total {
+    color:#FF0;
+}
+.oldVersion {
+    color:#999;
+}
+.pkgName {
+    color:#FFF;
+}

@@ -1,0 +1,8 @@
+<hr>
+<form method=post action=@{HomeR} enctype=#{formEnctype}>
+    <h4>
+        Select package conditions :
+    ^{formWidget}
+    ^{categWidget True}
+    <button type="submit">
+        Select packages
